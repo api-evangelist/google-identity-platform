@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cloud.google.com/schemas/identity-platform/user.json",
+  "title": "Google Identity Platform User Record",
+  "description": "Schema for a user record in Google Identity Platform, representing an authenticated user with their profile information, provider data, and authentication state.",
+  "type": "object",
+  "required": ["localId"],
+  "properties": {
+    "localId": {
+      "type": "string",
+      "description": "The unique user ID assigned by Identity Platform"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "The user's email address"
+    },
+    "emailVerified": {
+      "type": "boolean",
+      "description": "Whether the user's email has been verified"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The user's display name"
+    },
+    "photoUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the user's profile photo"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "description": "The user's phone number in E.164 format"
+    },
+    "disabled": {
+      "type": "boolean",
+      "description": "Whether the user account is disabled",
+      "default": false
+    },
+    "providerUserInfo": {
+      "type": "array",
+      "description": "Linked identity provider accounts",
+      "items": {
+        "$ref": "#/$defs/ProviderInfo"
+      }
+    },
+    "mfaInfo": {
+      "type": "array",
+      "description": "Multi-factor authentication enrollments",
+      "items": {
+        "$ref": "#/$defs/MfaEnrollment"
+      }
+    },
+    "tenantId": {
+      "type": "string",
+      "description": "The tenant ID if the user belongs to a specific tenant"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "Account creation timestamp in milliseconds since epoch"
+    },
+    "lastLoginAt": {
+      "type": "string",
+      "description": "Last sign-in timestamp in milliseconds since epoch"
+    },
+    "customAttributes": {
+      "type": "string",
+      "description": "Custom claims JSON string set via Admin SDK"
+    }
+  },
+  "$defs": {
+    "ProviderInfo": {
+      "type": "object",
+      "description": "Information about a linked identity provider",
+      "properties": {
+        "providerId": {
+          "type": "string",
+          "description": "The provider identifier (e.g., google.com, facebook.com, password)"
+        },
+        "federatedId": {
+          "type": "string",
+          "description": "The user's unique ID at the provider"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "photoUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "MfaEnrollment": {
+      "type": "object",
+      "description": "A multi-factor authentication enrollment",
+      "properties": {
+        "mfaEnrollmentId": {
+          "type": "string",
+          "description": "The MFA enrollment ID"
+        },
+        "phoneInfo": {
+          "type": "string",
+          "description": "Phone number for SMS-based MFA"
+        },
+        "totpInfo": {
+          "type": "object",
+          "description": "TOTP configuration for authenticator app MFA"
+        },
+        "enrolledAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this factor was enrolled"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Friendly name for this MFA enrollment"
+        }
+      }
+    }
+  }
+}

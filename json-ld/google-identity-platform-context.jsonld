@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "idp": "https://cloud.google.com/identity-platform/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "User": {
+      "@id": "idp:User",
+      "@context": {
+        "localId": "idp:localId",
+        "email": "schema:email",
+        "displayName": "schema:name",
+        "photoUrl": {
+          "@id": "schema:image",
+          "@type": "@id"
+        },
+        "phoneNumber": "schema:telephone",
+        "emailVerified": "idp:emailVerified",
+        "disabled": "idp:disabled",
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastLoginAt": {
+          "@id": "idp:lastLoginAt",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Tenant": {
+      "@id": "idp:Tenant",
+      "@context": {
+        "tenantId": "idp:tenantId",
+        "displayName": "schema:name",
+        "allowPasswordSignup": "idp:allowPasswordSignup",
+        "enableEmailLinkSignin": "idp:enableEmailLinkSignin",
+        "enableAnonymousUser": "idp:enableAnonymousUser"
+      }
+    },
+
+    "ProviderConfig": {
+      "@id": "idp:ProviderConfig",
+      "@context": {
+        "providerId": "idp:providerId",
+        "displayName": "schema:name",
+        "enabled": "idp:enabled",
+        "clientId": "idp:clientId",
+        "issuer": {
+          "@id": "idp:issuer",
+          "@type": "@id"
+        }
+      }
+    }
+  }
+}

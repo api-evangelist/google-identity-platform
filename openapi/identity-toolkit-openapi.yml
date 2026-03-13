@@ -1,0 +1,303 @@
+openapi: 3.1.0
+info:
+  title: Google Identity Toolkit API
+  description: >-
+    The Identity Toolkit API provides REST endpoints for user authentication
+    and management in Google Identity Platform. It supports email/password,
+    phone, and federated sign-in, token management, multi-factor authentication,
+    and user account operations.
+  version: v3
+  contact:
+    name: Google Cloud Support
+    url: https://cloud.google.com/identity-platform/docs/support
+  termsOfService: https://cloud.google.com/terms
+externalDocs:
+  description: Identity Platform REST API Reference
+  url: https://cloud.google.com/identity-platform/docs/reference/rest
+servers:
+  - url: https://identitytoolkit.googleapis.com/v1
+    description: Identity Toolkit API v1
+tags:
+  - name: Accounts
+    description: User account operations
+  - name: Projects
+    description: Project configuration operations
+security:
+  - apiKey: []
+paths:
+  /accounts:signUp:
+    post:
+      operationId: signUp
+      summary: Sign up with email/password
+      description: >-
+        Creates a new user account with the given email and password, or
+        signs up an anonymous user.
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                displayName:
+                  type: string
+                returnSecureToken:
+                  type: boolean
+                  default: true
+      responses:
+        '200':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUpResponse'
+        '400':
+          description: Invalid request
+  /accounts:signInWithPassword:
+    post:
+      operationId: signInWithPassword
+      summary: Sign in with email/password
+      description: Signs in a user with email and password credentials.
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                returnSecureToken:
+                  type: boolean
+                  default: true
+      responses:
+        '200':
+          description: Sign-in successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInResponse'
+        '400':
+          description: Invalid credentials
+  /accounts:signInWithIdp:
+    post:
+      operationId: signInWithIdp
+      summary: Sign in with identity provider
+      description: >-
+        Signs in or links a user using credentials from a federated identity
+        provider (Google, Facebook, etc.).
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                requestUri:
+                  type: string
+                postBody:
+                  type: string
+                returnSecureToken:
+                  type: boolean
+                returnIdpCredential:
+                  type: boolean
+      responses:
+        '200':
+          description: Sign-in successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInResponse'
+  /accounts:lookup:
+    post:
+      operationId: lookupAccount
+      summary: Get user account info
+      description: Retrieves account information for one or more users by ID token or local ID.
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+                localId:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: User account information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserRecord'
+  /accounts:sendOobCode:
+    post:
+      operationId: sendOobCode
+      summary: Send out-of-band code
+      description: >-
+        Sends an out-of-band confirmation code for email verification or
+        password reset.
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - requestType
+              properties:
+                requestType:
+                  type: string
+                  enum: [VERIFY_EMAIL, PASSWORD_RESET]
+                idToken:
+                  type: string
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: Code sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+  /accounts:delete:
+    post:
+      operationId: deleteAccount
+      summary: Delete account
+      description: Deletes a user account.
+      tags:
+        - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idToken:
+                  type: string
+                localId:
+                  type: string
+      responses:
+        '200':
+          description: Account deleted
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: key
+      in: query
+  schemas:
+    SignUpResponse:
+      type: object
+      properties:
+        localId:
+          type: string
+          description: The user ID
+        email:
+          type: string
+        idToken:
+          type: string
+          description: Firebase ID token
+        refreshToken:
+          type: string
+        expiresIn:
+          type: string
+          description: Token expiration time in seconds
+    SignInResponse:
+      type: object
+      properties:
+        localId:
+          type: string
+        email:
+          type: string
+        displayName:
+          type: string
+        idToken:
+          type: string
+        refreshToken:
+          type: string
+        expiresIn:
+          type: string
+        registered:
+          type: boolean
+    UserRecord:
+      type: object
+      properties:
+        localId:
+          type: string
+          description: The user's unique ID
+        email:
+          type: string
+        emailVerified:
+          type: boolean
+        displayName:
+          type: string
+        photoUrl:
+          type: string
+        disabled:
+          type: boolean
+        providerUserInfo:
+          type: array
+          items:
+            type: object
+            properties:
+              providerId:
+                type: string
+              federatedId:
+                type: string
+              email:
+                type: string
+              displayName:
+                type: string
+        createdAt:
+          type: string
+          description: Account creation timestamp in milliseconds
+        lastLoginAt:
+          type: string
+          description: Last login timestamp in milliseconds
+        mfaInfo:
+          type: array
+          items:
+            type: object
+            properties:
+              mfaEnrollmentId:
+                type: string
+              phoneInfo:
+                type: string
+              enrolledAt:
+                type: string
+                format: date-time
