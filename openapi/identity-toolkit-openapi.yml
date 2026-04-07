@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Google Identity Toolkit API
+  title: Google Identity Platform Google Identity Toolkit API
   description: >-
     The Identity Toolkit API provides REST endpoints for user authentication
     and management in Google Identity Platform. It supports email/password,
@@ -28,7 +28,7 @@ paths:
   /accounts:signUp:
     post:
       operationId: signUp
-      summary: Sign up with email/password
+      summary: Google Identity Platform Sign up with email/password
       description: >-
         Creates a new user account with the given email and password, or
         signs up an anonymous user.
@@ -63,7 +63,7 @@ paths:
   /accounts:signInWithPassword:
     post:
       operationId: signInWithPassword
-      summary: Sign in with email/password
+      summary: Google Identity Platform Sign in with email/password
       description: Signs in a user with email and password credentials.
       tags:
         - Accounts
@@ -97,7 +97,7 @@ paths:
   /accounts:signInWithIdp:
     post:
       operationId: signInWithIdp
-      summary: Sign in with identity provider
+      summary: Google Identity Platform Sign in with identity provider
       description: >-
         Signs in or links a user using credentials from a federated identity
         provider (Google, Facebook, etc.).
@@ -128,7 +128,7 @@ paths:
   /accounts:lookup:
     post:
       operationId: lookupAccount
-      summary: Get user account info
+      summary: Google Identity Platform Get user account info
       description: Retrieves account information for one or more users by ID token or local ID.
       tags:
         - Accounts
@@ -160,7 +160,7 @@ paths:
   /accounts:sendOobCode:
     post:
       operationId: sendOobCode
-      summary: Send out-of-band code
+      summary: Google Identity Platform Send out-of-band code
       description: >-
         Sends an out-of-band confirmation code for email verification or
         password reset.
@@ -196,7 +196,7 @@ paths:
   /accounts:delete:
     post:
       operationId: deleteAccount
-      summary: Delete account
+      summary: Google Identity Platform Delete account
       description: Deletes a user account.
       tags:
         - Accounts
