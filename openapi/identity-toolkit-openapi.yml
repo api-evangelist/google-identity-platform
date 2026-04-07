@@ -20,8 +20,6 @@ servers:
 tags:
   - name: Accounts
     description: User account operations
-  - name: Projects
-    description: Project configuration operations
 security:
   - apiKey: []
 paths:
