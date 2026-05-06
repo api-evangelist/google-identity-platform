@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,65 +9,25 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Google Identity Platform
 providerId: google-identity-platform
-publisherName: Google Identity Platform
-serviceCategory: API
+publisherName: Google LLC
+serviceCategory: Identity
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
+  - FinOps
+  - FOCUS
+  - Identity
   - Authentication
   - Google Cloud
-  - Identity
-  - Multi-Tenancy
-  - OAuth
-  - OpenID Connect
-  - SAML
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the Google Identity Platform API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+description: 'FOCUS-aligned FinOps for Google Identity Platform: per-MAU usage charges plus per-SMS phone
+  authentication, billed through the Google Cloud invoice with full Cloud Billing integration.'
+sources:
+  - https://cloud.google.com/identity-platform/pricing
+  - https://firebase.google.com/pricing
+  - https://cloud.google.com/billing/docs
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Pay-As-You-Go + Committed Use
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
@@ -75,77 +36,51 @@ billingModel:
     - Tax
     - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Google Identity Platform
-  ServiceCategory: Developer Tools / API
-  ProviderName: Google Identity Platform
-  PublisherName: Google Identity Platform
-  InvoiceIssuerName: Google Identity Platform
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceCategory: Identity
+  ProviderName: Google
+  PublisherName: Google LLC
+  InvoiceIssuerName: Google LLC
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
+  - name: monthly_active_users_standard
+    description: MAUs authenticated via standard providers (email/password, social, anonymous, custom)
+    unit: mau
+    aggregation: max
     dimensions:
-      - api
-      - endpoint
-      - tier
+      - tenant
+      - provider
       - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
+  - name: monthly_active_users_saml_oidc
+    description: MAUs authenticated via SAML or OIDC enterprise providers
+    unit: mau
+    aggregation: max
     dimensions:
-      - api
+      - tenant
+      - provider
       - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+  - name: phone_auth_verifications
+    description: SMS phone-auth verification messages sent
+    unit: sms
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Identity Toolkit API
-    baseURL: https://identitytoolkit.googleapis.com
-    tags:
-      - Authentication
-      - Identity
-      - Sign-In
-      - Users
-    serviceName: Identity Toolkit API
-    serviceCategory: API
-  - name: Identity Platform Tenant Management API
-    baseURL: https://identitytoolkit.googleapis.com
-    tags:
-      - Multi-Tenancy
-      - SaaS
-      - Tenant Management
-    serviceName: Identity Platform Tenant Management API
-    serviceCategory: API
-  - name: Identity Platform OAuth Configuration API
-    baseURL: https://identitytoolkit.googleapis.com
-    tags:
-      - Federation
-      - Identity Providers
-      - OAuth
-    serviceName: Identity Platform OAuth Configuration API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - destination_country
+      - tenant
+principles:
+  - name: Visibility
+    description: Use Google Cloud Billing exports to BigQuery and the Identity Platform usage dashboard
+      to track MAU and SMS spend per project.
+  - name: Allocation
+    description: Tag Google Cloud projects and Identity Platform tenants with team / environment labels
+      so MAU and SMS charges roll up per consuming team.
+  - name: Optimization
+    description: Move suitable workloads under the 50K-MAU no-cost tier; consolidate sandbox tenants into
+      shared projects; restrict SMS auth to high-risk geographies and prefer TOTP for low-risk users.
+  - name: Accountability
+    description: Set Cloud Billing budgets and anomaly alerts on the Identity Platform SKU; review
+      monthly MAU growth against forecast.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

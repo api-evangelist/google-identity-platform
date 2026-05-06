@@ -4,98 +4,54 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Google Identity Platform
 providerId: google-identity-platform
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
+  - Rate Limiting
   - Authentication
   - Google Cloud
   - Identity
-  - Multi-Tenancy
-  - OAuth
-  - OpenID Connect
-  - SAML
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Google Identity Platform API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Google Identity Platform inherits Google Cloud's standard quota and rate-limit model. Limits are
+  enforced per-project and per-API-method; defaults are documented in the Google Cloud Console quotas page and
+  can be increased on request. Per-project request quotas apply to the Identity Toolkit API and related
+  Identity Platform endpoints. SMS phone-auth has separate per-project verification quotas.
+sources:
+  - https://cloud.google.com/identity-platform/docs/quotas
+  - https://cloud.google.com/identity-platform/pricing
+  - https://cloud.google.com/docs/quota
 responseCodes:
   throttled: 429
   quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
+  - name: Identity Platform API requests
+    scope: project
     metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Identity Toolkit API
-      - Identity Platform Tenant Management API
-      - Identity Platform OAuth Configuration API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Identity Toolkit API
-      - Identity Platform Tenant Management API
-      - Identity Platform OAuth Configuration API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Identity Toolkit API
-      - Identity Platform Tenant Management API
-      - Identity Platform OAuth Configuration API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Identity Toolkit API
-      - Identity Platform Tenant Management API
-      - Identity Platform OAuth Configuration API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Identity Toolkit API
-      - Identity Platform Tenant Management API
-      - Identity Platform OAuth Configuration API
+    limit: 'see service-specific quotas page'
+    notes: Default project quotas are visible in the Google Cloud Console under IAM > Quotas. Many endpoints
+      have a default of around 3,000 requests per minute per project; raise via support.
+  - name: Phone authentication SMS sends
+    scope: project
+    metric: requests_per_day
+    limit: 'see service-specific quotas page'
+    notes: SMS verification quotas are per-project per-region; raise via Google Cloud support if higher
+      throughput is needed.
+  - name: Account creation
+    scope: project
+    metric: varies
+    limit: 'see service-specific quotas page'
+    notes: Sign-up endpoints have abuse-protection rate limits which can be tuned in the Identity Platform
+      console.
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Clients should implement exponential backoff with jitter when receiving 429 or 503,
+      honoring the Retry-After header when present.
+  - name: Quota raise via support
+    description: Default project quotas can be increased through the Google Cloud Console quota request
+      flow; SLA-backed limits available on enterprise contracts.
+  - name: Per-project scoping
+    description: Quotas are scoped to the Google Cloud project; multi-tenant deployments share the same
+      project quota across tenants.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
