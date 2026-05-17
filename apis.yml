@@ -84,9 +84,9 @@ common:
     url: https://cloud.google.com/identity-platform/docs/reference/libraries
   - type: Support
     url: https://cloud.google.com/identity-platform/docs/support
-  - type: Status
+  - type: StatusPage
     url: https://status.cloud.google.com
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/google-identity-platform-context.jsonld
   - type: Integrations
     url: https://cloud.google.com/marketplace
