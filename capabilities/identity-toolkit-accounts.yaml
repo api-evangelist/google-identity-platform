@@ -1,0 +1,293 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Identity Platform Google Identity Toolkit API — Accounts
+  description: 'Google Identity Platform Google Identity Toolkit API — Accounts. 6 operations. Lead operation: Google Identity
+    Platform Delete account. Self-contained Naftiko capability covering one Google Identity Platform business surface.'
+  tags:
+  - Google Identity Platform
+  - Accounts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_IDENTITY_PLATFORM_API_KEY: GOOGLE_IDENTITY_PLATFORM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: identity-toolkit-accounts
+    baseUri: https://identitytoolkit.googleapis.com/v1
+    description: Google Identity Platform Google Identity Toolkit API — Accounts business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: accounts:delete
+      path: /accounts:delete
+      operations:
+      - name: deleteaccount
+        method: POST
+        description: Google Identity Platform Delete account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: accounts:lookup
+      path: /accounts:lookup
+      operations:
+      - name: lookupaccount
+        method: POST
+        description: Google Identity Platform Get user account info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: accounts:sendOobCode
+      path: /accounts:sendOobCode
+      operations:
+      - name: sendoobcode
+        method: POST
+        description: Google Identity Platform Send out-of-band code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: accounts:signInWithIdp
+      path: /accounts:signInWithIdp
+      operations:
+      - name: signinwithidp
+        method: POST
+        description: Google Identity Platform Sign in with identity provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: accounts:signInWithPassword
+      path: /accounts:signInWithPassword
+      operations:
+      - name: signinwithpassword
+        method: POST
+        description: Google Identity Platform Sign in with email/password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: accounts:signUp
+      path: /accounts:signUp
+      operations:
+      - name: signup
+        method: POST
+        description: Google Identity Platform Sign up with email/password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: key
+      value: '{{env.GOOGLE_IDENTITY_PLATFORM_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: identity-toolkit-accounts-rest
+    port: 8080
+    description: REST adapter for Google Identity Platform Google Identity Toolkit API — Accounts. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/accounts-delete
+      name: accounts-delete
+      description: REST surface for accounts:delete.
+      operations:
+      - method: POST
+        name: deleteaccount
+        description: Google Identity Platform Delete account
+        call: identity-toolkit-accounts.deleteaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts-lookup
+      name: accounts-lookup
+      description: REST surface for accounts:lookup.
+      operations:
+      - method: POST
+        name: lookupaccount
+        description: Google Identity Platform Get user account info
+        call: identity-toolkit-accounts.lookupaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts-sendoobcode
+      name: accounts-sendoobcode
+      description: REST surface for accounts:sendOobCode.
+      operations:
+      - method: POST
+        name: sendoobcode
+        description: Google Identity Platform Send out-of-band code
+        call: identity-toolkit-accounts.sendoobcode
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts-signinwithidp
+      name: accounts-signinwithidp
+      description: REST surface for accounts:signInWithIdp.
+      operations:
+      - method: POST
+        name: signinwithidp
+        description: Google Identity Platform Sign in with identity provider
+        call: identity-toolkit-accounts.signinwithidp
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts-signinwithpassword
+      name: accounts-signinwithpassword
+      description: REST surface for accounts:signInWithPassword.
+      operations:
+      - method: POST
+        name: signinwithpassword
+        description: Google Identity Platform Sign in with email/password
+        call: identity-toolkit-accounts.signinwithpassword
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts-signup
+      name: accounts-signup
+      description: REST surface for accounts:signUp.
+      operations:
+      - method: POST
+        name: signup
+        description: Google Identity Platform Sign up with email/password
+        call: identity-toolkit-accounts.signup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: identity-toolkit-accounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Identity Platform Google Identity Toolkit API — Accounts. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: google-identity-platform-delete-account
+      description: Google Identity Platform Delete account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: identity-toolkit-accounts.deleteaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-identity-platform-get-user
+      description: Google Identity Platform Get user account info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: identity-toolkit-accounts.lookupaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-identity-platform-send-out
+      description: Google Identity Platform Send out-of-band code
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: identity-toolkit-accounts.sendoobcode
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-identity-platform-sign-identity
+      description: Google Identity Platform Sign in with identity provider
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: identity-toolkit-accounts.signinwithidp
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-identity-platform-sign-email
+      description: Google Identity Platform Sign in with email/password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: identity-toolkit-accounts.signinwithpassword
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-identity-platform-sign-up
+      description: Google Identity Platform Sign up with email/password
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: identity-toolkit-accounts.signup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
