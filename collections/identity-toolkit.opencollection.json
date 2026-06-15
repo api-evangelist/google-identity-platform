@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Identity Platform Google Identity Toolkit API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Identity Platform Sign up with email/password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://identitytoolkit.googleapis.com/v1/accounts:signUp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user account with the given email and password, or signs up an anonymous user."
+        },
+        {
+          "info": {
+            "name": "Google Identity Platform Sign in with email/password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Signs in a user with email and password credentials."
+        },
+        {
+          "info": {
+            "name": "Google Identity Platform Sign in with identity provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Signs in or links a user using credentials from a federated identity provider (Google, Facebook, etc.)."
+        },
+        {
+          "info": {
+            "name": "Google Identity Platform Get user account info",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://identitytoolkit.googleapis.com/v1/accounts:lookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves account information for one or more users by ID token or local ID."
+        },
+        {
+          "info": {
+            "name": "Google Identity Platform Send out-of-band code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an out-of-band confirmation code for email verification or password reset."
+        },
+        {
+          "info": {
+            "name": "Google Identity Platform Delete account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://identitytoolkit.googleapis.com/v1/accounts:delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes a user account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
