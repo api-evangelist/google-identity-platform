@@ -71,6 +71,12 @@ apis:
       - type: Documentation
         url: https://cloud.google.com/identity-platform/docs/reference/rest/v2/projects.defaultSupportedIdpConfigs
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-identity-platform-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-identity-platform-domain-security.yml
+  - type: Authentication
+    url: authentication/google-identity-platform-authentication.yml
   - type: GettingStarted
     url: https://cloud.google.com/identity-platform/docs/quickstarts
   - type: Pricing
