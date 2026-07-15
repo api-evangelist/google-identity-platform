@@ -71,6 +71,8 @@ apis:
       - type: Documentation
         url: https://cloud.google.com/identity-platform/docs/reference/rest/v2/projects.defaultSupportedIdpConfigs
 common:
+  - type: AgenticAccess
+    url: agentic-access/google-identity-platform-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/google-identity-platform-vulnerability-disclosure.yml
   - type: DomainSecurity
