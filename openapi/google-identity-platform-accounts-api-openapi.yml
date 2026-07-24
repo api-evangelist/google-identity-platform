@@ -1,37 +1,28 @@
 openapi: 3.1.0
 info:
-  title: Google Identity Platform Google Identity Toolkit API
-  description: >-
-    The Identity Toolkit API provides REST endpoints for user authentication
-    and management in Google Identity Platform. It supports email/password,
-    phone, and federated sign-in, token management, multi-factor authentication,
-    and user account operations.
+  title: Google Identity Platform Google Identity Toolkit Accounts API
+  description: The Identity Toolkit API provides REST endpoints for user authentication and management in Google Identity Platform. It supports email/password, phone, and federated sign-in, token management, multi-factor authentication, and user account operations.
   version: v3
   contact:
     name: Google Cloud Support
     url: https://cloud.google.com/identity-platform/docs/support
   termsOfService: https://cloud.google.com/terms
-externalDocs:
-  description: Identity Platform REST API Reference
-  url: https://cloud.google.com/identity-platform/docs/reference/rest
 servers:
-  - url: https://identitytoolkit.googleapis.com/v1
-    description: Identity Toolkit API v1
-tags:
-  - name: Accounts
-    description: User account operations
+- url: https://identitytoolkit.googleapis.com/v1
+  description: Identity Toolkit API v1
 security:
-  - apiKey: []
+- apiKey: []
+tags:
+- name: Accounts
+  description: User account operations
 paths:
   /accounts:signUp:
     post:
       operationId: signUp
       summary: Google Identity Platform Sign up with email/password
-      description: >-
-        Creates a new user account with the given email and password, or
-        signs up an anonymous user.
+      description: Creates a new user account with the given email and password, or signs up an anonymous user.
       tags:
-        - Accounts
+      - Accounts
       requestBody:
         required: true
         content:
@@ -64,7 +55,7 @@ paths:
       summary: Google Identity Platform Sign in with email/password
       description: Signs in a user with email and password credentials.
       tags:
-        - Accounts
+      - Accounts
       requestBody:
         required: true
         content:
@@ -72,8 +63,8 @@ paths:
             schema:
               type: object
               required:
-                - email
-                - password
+              - email
+              - password
               properties:
                 email:
                   type: string
@@ -96,11 +87,9 @@ paths:
     post:
       operationId: signInWithIdp
       summary: Google Identity Platform Sign in with identity provider
-      description: >-
-        Signs in or links a user using credentials from a federated identity
-        provider (Google, Facebook, etc.).
+      description: Signs in or links a user using credentials from a federated identity provider (Google, Facebook, etc.).
       tags:
-        - Accounts
+      - Accounts
       requestBody:
         required: true
         content:
@@ -129,7 +118,7 @@ paths:
       summary: Google Identity Platform Get user account info
       description: Retrieves account information for one or more users by ID token or local ID.
       tags:
-        - Accounts
+      - Accounts
       requestBody:
         required: true
         content:
@@ -159,11 +148,9 @@ paths:
     post:
       operationId: sendOobCode
       summary: Google Identity Platform Send out-of-band code
-      description: >-
-        Sends an out-of-band confirmation code for email verification or
-        password reset.
+      description: Sends an out-of-band confirmation code for email verification or password reset.
       tags:
-        - Accounts
+      - Accounts
       requestBody:
         required: true
         content:
@@ -171,11 +158,13 @@ paths:
             schema:
               type: object
               required:
-                - requestType
+              - requestType
               properties:
                 requestType:
                   type: string
-                  enum: [VERIFY_EMAIL, PASSWORD_RESET]
+                  enum:
+                  - VERIFY_EMAIL
+                  - PASSWORD_RESET
                 idToken:
                   type: string
                 email:
@@ -197,7 +186,7 @@ paths:
       summary: Google Identity Platform Delete account
       description: Deletes a user account.
       tags:
-        - Accounts
+      - Accounts
       requestBody:
         required: true
         content:
@@ -213,28 +202,7 @@ paths:
         '200':
           description: Account deleted
 components:
-  securitySchemes:
-    apiKey:
-      type: apiKey
-      name: key
-      in: query
   schemas:
-    SignUpResponse:
-      type: object
-      properties:
-        localId:
-          type: string
-          description: The user ID
-        email:
-          type: string
-        idToken:
-          type: string
-          description: Firebase ID token
-        refreshToken:
-          type: string
-        expiresIn:
-          type: string
-          description: Token expiration time in seconds
     SignInResponse:
       type: object
       properties:
@@ -299,3 +267,27 @@ components:
               enrolledAt:
                 type: string
                 format: date-time
+    SignUpResponse:
+      type: object
+      properties:
+        localId:
+          type: string
+          description: The user ID
+        email:
+          type: string
+        idToken:
+          type: string
+          description: Firebase ID token
+        refreshToken:
+          type: string
+        expiresIn:
+          type: string
+          description: Token expiration time in seconds
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: key
+      in: query
+externalDocs:
+  description: Identity Platform REST API Reference
+  url: https://cloud.google.com/identity-platform/docs/reference/rest
