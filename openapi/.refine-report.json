@@ -1,0 +1,14 @@
+{
+  "provider": "google-identity-platform",
+  "sources": [
+    "google-identity-platform-accounts-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-identity-platform-accounts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
