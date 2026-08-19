@@ -1,0 +1,699 @@
+{
+  "item": [
+    {
+      "id": "fe6e6cb5-8be6-471a-b01f-c2279e3f97d5",
+      "name": "Accounts",
+      "description": {
+        "content": "User account operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "59d0550e-6146-42ca-9c53-c0693ec03d9b",
+          "name": "Google Identity Platform Sign up with email/password",
+          "request": {
+            "name": "Google Identity Platform Sign up with email/password",
+            "description": {
+              "content": "Creates a new user account with the given email and password, or signs up an anonymous user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts:signUp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"returnSecureToken\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8be36022-81fd-4e61-9088-fc332d50ef87",
+              "name": "User created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts:signUp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"returnSecureToken\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"localId\": \"string\",\n  \"email\": \"string\",\n  \"idToken\": \"string\",\n  \"refreshToken\": \"string\",\n  \"expiresIn\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c63f5d5d-7afa-4a9f-8524-2744659bb507",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts:signUp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"returnSecureToken\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74669987-386a-49f9-acfe-5f4ca646abdb",
+          "name": "Google Identity Platform Sign in with email/password",
+          "request": {
+            "name": "Google Identity Platform Sign in with email/password",
+            "description": {
+              "content": "Signs in a user with email and password credentials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts:signInWithPassword"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"returnSecureToken\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "42ebd0fb-5157-4bce-9b86-87d36bbaf68d",
+              "name": "Sign-in successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts:signInWithPassword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"returnSecureToken\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"localId\": \"string\",\n  \"email\": \"string\",\n  \"displayName\": \"string\",\n  \"idToken\": \"string\",\n  \"refreshToken\": \"string\",\n  \"expiresIn\": \"string\",\n  \"registered\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35b9a804-76a5-4864-a4f0-bba6ec709a14",
+              "name": "Invalid credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts:signInWithPassword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"returnSecureToken\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d83447a3-b5ea-4228-a571-ea57952e7537",
+          "name": "Google Identity Platform Sign in with identity provider",
+          "request": {
+            "name": "Google Identity Platform Sign in with identity provider",
+            "description": {
+              "content": "Signs in or links a user using credentials from a federated identity provider (Google, Facebook, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts:signInWithIdp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestUri\": \"<string>\",\n  \"postBody\": \"<string>\",\n  \"returnSecureToken\": \"<boolean>\",\n  \"returnIdpCredential\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf8ba65e-b6d5-45e0-9ca7-9907b220a1af",
+              "name": "Sign-in successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts:signInWithIdp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestUri\": \"<string>\",\n  \"postBody\": \"<string>\",\n  \"returnSecureToken\": \"<boolean>\",\n  \"returnIdpCredential\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"localId\": \"string\",\n  \"email\": \"string\",\n  \"displayName\": \"string\",\n  \"idToken\": \"string\",\n  \"refreshToken\": \"string\",\n  \"expiresIn\": \"string\",\n  \"registered\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa69557d-1844-4f73-8517-b5570ef85c6d",
+          "name": "Google Identity Platform Get user account info",
+          "request": {
+            "name": "Google Identity Platform Get user account info",
+            "description": {
+              "content": "Retrieves account information for one or more users by ID token or local ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts:lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idToken\": \"<string>\",\n  \"localId\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "951e47d9-6d17-4cb1-9a0a-b54fa18db906",
+              "name": "User account information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts:lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idToken\": \"<string>\",\n  \"localId\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"localId\": \"string\",\n      \"email\": \"string\",\n      \"emailVerified\": true,\n      \"displayName\": \"string\",\n      \"photoUrl\": \"string\",\n      \"disabled\": true,\n      \"providerUserInfo\": [\n        {\n          \"providerId\": \"string\",\n          \"federatedId\": \"string\",\n          \"email\": \"string\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"providerId\": \"string\",\n          \"federatedId\": \"string\",\n          \"email\": \"string\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"createdAt\": \"string\",\n      \"lastLoginAt\": \"string\",\n      \"mfaInfo\": [\n        {\n          \"mfaEnrollmentId\": \"string\",\n          \"phoneInfo\": \"string\",\n          \"enrolledAt\": \"2005-06-19T05:38:49.021Z\"\n        },\n        {\n          \"mfaEnrollmentId\": \"string\",\n          \"phoneInfo\": \"string\",\n          \"enrolledAt\": \"1988-11-28T04:10:25.690Z\"\n        }\n      ]\n    },\n    {\n      \"localId\": \"string\",\n      \"email\": \"string\",\n      \"emailVerified\": false,\n      \"displayName\": \"string\",\n      \"photoUrl\": \"string\",\n      \"disabled\": true,\n      \"providerUserInfo\": [\n        {\n          \"providerId\": \"string\",\n          \"federatedId\": \"string\",\n          \"email\": \"string\",\n          \"displayName\": \"string\"\n        },\n        {\n          \"providerId\": \"string\",\n          \"federatedId\": \"string\",\n          \"email\": \"string\",\n          \"displayName\": \"string\"\n        }\n      ],\n      \"createdAt\": \"string\",\n      \"lastLoginAt\": \"string\",\n      \"mfaInfo\": [\n        {\n          \"mfaEnrollmentId\": \"string\",\n          \"phoneInfo\": \"string\",\n          \"enrolledAt\": \"2020-02-18T02:38:58.523Z\"\n        },\n        {\n          \"mfaEnrollmentId\": \"string\",\n          \"phoneInfo\": \"string\",\n          \"enrolledAt\": \"1999-04-25T15:01:39.313Z\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71d7012f-e8c2-45f6-aa77-880d09ae8875",
+          "name": "Google Identity Platform Send out-of-band code",
+          "request": {
+            "name": "Google Identity Platform Send out-of-band code",
+            "description": {
+              "content": "Sends an out-of-band confirmation code for email verification or password reset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts:sendOobCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestType\": \"<string>\",\n  \"idToken\": \"<string>\",\n  \"email\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "217e6d10-11e8-4f04-9df7-99eb1cd88854",
+              "name": "Code sent successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts:sendOobCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestType\": \"<string>\",\n  \"idToken\": \"<string>\",\n  \"email\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a964f0b-b5d7-4a53-be80-d4b09db2ea1a",
+          "name": "Google Identity Platform Delete account",
+          "request": {
+            "name": "Google Identity Platform Delete account",
+            "description": {
+              "content": "Deletes a user account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts:delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idToken\": \"<string>\",\n  \"localId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e951b71-c3fb-4c72-ac3a-f66961938877",
+              "name": "Account deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts:delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idToken\": \"<string>\",\n  \"localId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://identitytoolkit.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0e0e56fa-89aa-4aed-8722-f4ad5def3b02",
+    "name": "Google Identity Platform Google Identity Toolkit Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Identity Toolkit API provides REST endpoints for user authentication and management in Google Identity Platform. It supports email/password, phone, and federated sign-in, token management, multi-factor authentication, and user account operations.\n\nContact Support:\n Name: Google Cloud Support",
+      "type": "text/plain"
+    }
+  }
+}
