@@ -28,6 +28,13 @@ tags:
   - Google Cloud
   - Identity
   - Multi-Tenancy
+  - OpenID Connect
+  - SAML
+tags_raw:
+  - Authentication
+  - Google Cloud
+  - Identity
+  - Multi-Tenancy
   - OAuth
   - OpenID Connect
   - SAML
@@ -42,6 +49,10 @@ apis:
   humanURL: https://cloud.google.com/identity-platform/docs/multi-tenancy
   baseURL: https://identitytoolkit.googleapis.com
   tags:
+  - Multi-Tenancy
+  - Software-as-a-Service
+  - Tenant Management
+  tags_raw:
   - Multi-Tenancy
   - SaaS
   - Tenant Management
@@ -59,6 +70,10 @@ apis:
   tags:
   - Federation
   - Identity Providers
+  - Authentication
+  tags_raw:
+  - Federation
+  - Identity Providers
   - OAuth
   properties:
   - type: Documentation
@@ -70,6 +85,8 @@ apis:
   humanURL: https://cloud.google.com/identity-platform/docs/reference/rest
   baseURL: https://identitytoolkit.googleapis.com
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
