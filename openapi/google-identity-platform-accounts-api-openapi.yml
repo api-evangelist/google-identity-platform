@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Identity Platform Google Identity Toolkit Accounts API
+  title: Google Identity Platform Google Identity Toolkit Accounts…
   description: The Identity Toolkit API provides REST endpoints for user authentication and management in Google Identity Platform. It supports email/password, phone, and federated sign-in, token management, multi-factor authentication, and user account operations.
   version: v3
   contact:
@@ -203,22 +203,23 @@ paths:
           description: Account deleted
 components:
   schemas:
-    SignUpResponse:
+    SignInResponse:
       type: object
       properties:
         localId:
           type: string
-          description: The user ID
         email:
+          type: string
+        displayName:
           type: string
         idToken:
           type: string
-          description: Firebase ID token
         refreshToken:
           type: string
         expiresIn:
           type: string
-          description: Token expiration time in seconds
+        registered:
+          type: boolean
     UserRecord:
       type: object
       properties:
@@ -266,23 +267,22 @@ components:
               enrolledAt:
                 type: string
                 format: date-time
-    SignInResponse:
+    SignUpResponse:
       type: object
       properties:
         localId:
           type: string
+          description: The user ID
         email:
-          type: string
-        displayName:
           type: string
         idToken:
           type: string
+          description: Firebase ID token
         refreshToken:
           type: string
         expiresIn:
           type: string
-        registered:
-          type: boolean
+          description: Token expiration time in seconds
   securitySchemes:
     apiKey:
       type: apiKey
