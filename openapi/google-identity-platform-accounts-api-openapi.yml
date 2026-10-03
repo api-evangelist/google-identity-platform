@@ -219,6 +219,23 @@ components:
         expiresIn:
           type: string
           description: Token expiration time in seconds
+    SignInResponse:
+      type: object
+      properties:
+        localId:
+          type: string
+        email:
+          type: string
+        displayName:
+          type: string
+        idToken:
+          type: string
+        refreshToken:
+          type: string
+        expiresIn:
+          type: string
+        registered:
+          type: boolean
     UserRecord:
       type: object
       properties:
@@ -266,23 +283,6 @@ components:
               enrolledAt:
                 type: string
                 format: date-time
-    SignInResponse:
-      type: object
-      properties:
-        localId:
-          type: string
-        email:
-          type: string
-        displayName:
-          type: string
-        idToken:
-          type: string
-        refreshToken:
-          type: string
-        expiresIn:
-          type: string
-        registered:
-          type: boolean
   securitySchemes:
     apiKey:
       type: apiKey
