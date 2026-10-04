@@ -107,6 +107,9 @@ apis:
   - type: JSONSchema
     url: json-schema/google-identity-platform-user-schema.json
 common:
+- type: CapabilityMap
+  url: capabilities/google-identity-platform-capability-edges.yml
+  name: Google Identity Platform Business Capability Map
 - type: Website
   url: https://www.google.com/
 - type: AgenticAccess
