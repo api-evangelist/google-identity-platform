@@ -107,6 +107,12 @@ apis:
   - type: JSONSchema
     url: json-schema/google-identity-platform-user-schema.json
 common:
+- type: Plans
+  url: plans/google-identity-platform-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/google-identity-platform-rate-limits.yml
+- type: FinOps
+  url: finops/google-identity-platform-finops.yml
 - type: CapabilityMap
   url: capabilities/google-identity-platform-capability-edges.yml
   name: Google Identity Platform Business Capability Map
