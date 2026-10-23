@@ -107,6 +107,8 @@ apis:
   - type: JSONSchema
     url: json-schema/google-identity-platform-user-schema.json
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/google-identity-platform/overview
 - type: Plans
   url: plans/google-identity-platform-plans-pricing.yml
 - type: RateLimits
