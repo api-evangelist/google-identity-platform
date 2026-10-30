@@ -1,4 +1,4 @@
-# Google Identity Platform (google-identity-platform)
+# Google Identity Platform
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,102 +66,138 @@
 
 Google Identity Platform provides authentication and identity management APIs that enable developers to add sign-in, user management, and multi-tenancy capabilities to applications using industry-standard protocols including OAuth 2.0, OpenID Connect, and SAML.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/google-identity-platform/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/google-identity-platform/refs/heads/main/apis.yml)
+**Areas:** Authentication · Google Cloud · Identity · Multi-Tenancy · OpenID Connect · SAML · Identity Federation
 
-## Scope
+## Google Identity Platform on APIs.io
 
-- **Type:** Index
+Everything profiled for Google Identity Platform is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/google-identity-platform/](https://apis.io/providers/google-identity-platform/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Authentication
-- Google Cloud
-- Identity
-- Multi-Tenancy
-- OAuth
-- OpenID Connect
-- SAML
+- [Identity Platform Tenant Management API](https://apis.io/apis/google-identity-platform/identity-platform-tenant-management-api/) — The Tenant Management API enables developers to create and manage tenants for multi-tenant Identity Platform configurations. Each tenant can have its own…
+- [Identity Platform OAuth Configuration API](https://apis.io/apis/google-identity-platform/identity-platform-oauth-configuration-api/) — The OAuth Configuration API allows developers to programmatically manage OAuth identity provider configurations for Identity Platform projects. It supports…
+- [Google Identity Platform Accounts API](https://apis.io/apis/google-identity-platform/google-identity-platform-accounts-api/) — User account operations
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-13
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Identity Toolkit API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Identity Toolkit API (v3) provides REST endpoints for managing user authentication in Google Identity Platform. It supports creating and signing in users with email/password, phone, and federated identity providers. The API handles token verification, password resets, email verification, account linking, and multi-factor authentication enrollment and sign-in.
+- [Google Identity Platform Agentic Access](https://apis.io/agentic-access/google-identity-platform/google-identity-platform-agentic-access/)
 
-- **Human URL:** [https://cloud.google.com/identity-platform/docs/reference/rest](https://cloud.google.com/identity-platform/docs/reference/rest)
-- **Base URL:** `https://identitytoolkit.googleapis.com`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- Authentication
-- Identity
-- Sign-In
-- Users
+- [Google Identity Platform User Record](https://apis.io/schemas/google-identity-platform/google-identity-platform-user/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://cloud.google.com/identity-platform/docs/reference/rest)
-- [OpenAPI](openapi/identity-toolkit-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/identity-toolkit.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/identity-toolkit.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/google-identity-platform-user-schema.json) — [JSON Schema](https://json-schema.org/specification)
+Linked-data contexts for the provider's vocabulary.
 
-### Identity Platform Tenant Management API
+- [Google Identity Platform Context](https://apis.io/jsonld/google-identity-platform/google-identity-platform-context/)
 
-The Tenant Management API enables developers to create and manage tenants for multi-tenant Identity Platform configurations. Each tenant can have its own set of identity providers, authentication settings, and user pools, allowing SaaS applications to isolate authentication for different customers or organizational units.
+#### Collections (2)
 
-- **Human URL:** [https://cloud.google.com/identity-platform/docs/multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy)
-- **Base URL:** `https://identitytoolkit.googleapis.com`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Google Identity Platform Google Identity Toolkit Accounts API](https://apis.io/collections/google-identity-platform/open-google-identity-platform-accounts-api/)
+- [Google Identity Platform Google Identity Toolkit API](https://apis.io/collections/google-identity-platform/open-identity-toolkit/)
 
-- Multi-Tenancy
-- SaaS
-- Tenant Management
+#### Governance rules (1)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://cloud.google.com/identity-platform/docs/multi-tenancy)
-- [Postman Collection](collections/identity-toolkit.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/identity-toolkit.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Google Identity Platform — jsonschema rules](https://apis.io/rules/google-identity-platform/google-identity-platform-jsonschema-spectral-rules/)
 
-### Identity Platform OAuth Configuration API
+#### Security (3)
 
-The OAuth Configuration API allows developers to programmatically manage OAuth identity provider configurations for Identity Platform projects. It supports configuring Google, Facebook, Apple, Microsoft, Twitter, GitHub, and other OIDC and SAML providers for federated authentication.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://cloud.google.com/identity-platform/docs/federated-login](https://cloud.google.com/identity-platform/docs/federated-login)
-- **Base URL:** `https://identitytoolkit.googleapis.com`
+- [Google Identity Platform Authentication](https://apis.io/security/google-identity-platform/google-identity-platform-authentication/)
+- [Google Identity Platform Domain Security](https://apis.io/security/google-identity-platform/google-identity-platform-domain-security/)
+- [Google Identity Platform Vulnerability Disclosure](https://apis.io/security/google-identity-platform/google-identity-platform-vulnerability-disclosure/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Federation
-- Identity Providers
-- OAuth
+Published plans, tiers and prices.
 
-#### Properties
+- [Google Identity Platform Plans Pricing](https://apis.io/plans/google-identity-platform/google-identity-platform-plans-pricing/)
 
-- [Documentation](https://cloud.google.com/identity-platform/docs/reference/rest/v2/projects.defaultSupportedIdpConfigs)
-- [Postman Collection](collections/identity-toolkit.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/identity-toolkit.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-## Common Properties
+Published request limits.
 
-- [Getting Started](https://cloud.google.com/identity-platform/docs/quickstarts)
+- [Google Identity Platform Rate Limits](https://apis.io/rate-limits/google-identity-platform/google-identity-platform-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Google Identity Platform Finops](https://apis.io/finops/google-identity-platform/google-identity-platform-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.google.com/)
+- [Getting started](https://cloud.google.com/identity-platform/docs/quickstarts)
 - [Pricing](https://cloud.google.com/identity-platform/pricing)
-- [Authentication](https://cloud.google.com/identity-platform/docs/concepts)
-- [Console](https://console.cloud.google.com/customer-identity)
-- [S D Ks](https://cloud.google.com/identity-platform/docs/reference/libraries)
 - [Support](https://cloud.google.com/identity-platform/docs/support)
-- [Status Page](https://status.cloud.google.com)
-- [JSON-LD](json-ld/google-identity-platform-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Integrations](https://cloud.google.com/marketplace)
+- [Status](https://status.cloud.google.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 54.2 |
+| Contract governance | 9.8 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 18.4 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/google-identity-platform/](https://apis.io/providers/google-identity-platform/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Google Identity Platform: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/google-identity-platform/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
